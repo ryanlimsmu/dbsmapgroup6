@@ -3,7 +3,7 @@ from flask_jwt_extended import get_jwt_identity
 from routes.models  import db, RequestReceived
 from datetime import datetime
 
-def readAllCompaniesFunction(connection):
+def readAlertsFunction(connection):
 
     # Obtain request IDs (expect array of request IDs)
     data = request.get_json()

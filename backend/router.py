@@ -45,7 +45,8 @@ def configure_routes(app, connection):
 
     # 6
     @app.route('/deleteRequest', methods=['GET'])
-    def deleteRequest():
+    @app.route('/deleteRequst/<int:request_id>', methods=['DELETE'])
+    def deleteRequest(request_id):
         return deleteRequestFunction(connection)
     
     # 7
