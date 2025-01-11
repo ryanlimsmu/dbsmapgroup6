@@ -2,10 +2,10 @@ import React from 'react'
 
 const ReqButtons = () => {
   return (
-    <td>
-        <button style={{ color: 'green' }}type='button'>Accept</button>
-        <button style={{ color: 'red' }}type='button'>Reject</button>
-    </td>
+    <div>
+        <button style={{ backgroundColor: 'green', marginRight: '10px' }}type='button'>Accept</button>
+        <button style={{ backgroundColor: 'red' }}type='button'>Reject</button>
+    </div>
   )
 }
 
