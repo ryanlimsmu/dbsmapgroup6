@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import Link for navigation
-import '../../css/Login.css'; // Import the CSS for styling
+// import '../../css/Login.css'; // Import the CSS for styling
 import InputField from './InputField';
-import userService from '../../services/users';
-
+// import userService from '../../services/users';
+/*
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -107,3 +107,4 @@ const Login = () => {
 };
 
 export default Login;
+*/
