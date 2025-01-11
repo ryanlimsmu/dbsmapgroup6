@@ -29,7 +29,7 @@ def configure_routes(app, connection):
         return readAccountFunction(connection)
     
     # 3
-    @app.route('/createRequest', methods=['GET'])
+    @app.route('/createRequest', methods=['POST'])
     def createRequest():
         return createRequestFunction(connection)
     
@@ -39,12 +39,12 @@ def configure_routes(app, connection):
         return readRequestFunction(connection)
     
     # 5
-    @app.route('/updateRequest', methods=['GET'])
+    @app.route('/updateRequest', methods=['PUT'])
     def updateRequest():
         return updateRequestFunction(connection)
 
     # 6
-    @app.route('/deleteRequest', methods=['GET'])
+    @app.route('/deleteRequest', methods=['DELETE'])
     @app.route('/deleteRequst/<int:request_id>', methods=['DELETE'])
     def deleteRequest(request_id):
         return deleteRequestFunction(connection)
