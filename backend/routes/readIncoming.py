@@ -1,10 +1,6 @@
 from flask import Blueprint, request, jsonify
-<<<<<<< HEAD
 from flask_jwt_extended import get_jwt_identity
 from routes.models  import db, OutstandingRequest
-=======
-from routes.models import db, CompanyAccount
->>>>>>> haoying
 
 def readAllCompaniesFunction(connection):
     data = request.get_json()

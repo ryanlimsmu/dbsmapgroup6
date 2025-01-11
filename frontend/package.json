@@ -7,11 +7,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "ajv": "^8.17.1",
-<<<<<<< HEAD
     "bootstrap": "^5.3.3",
-=======
     "axios": "^1.7.9",
->>>>>>> haoying
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.7",
     "react-dom": "^19.0.0",

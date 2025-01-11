@@ -1,11 +1,6 @@
 from flask import Blueprint, request, jsonify
-<<<<<<< HEAD
 from flask_jwt_extended import get_jwt_identity
 from sqlalchemy.orm import joinedload
-=======
-from routes.models import db, CompanyAccount
->>>>>>> haoying
-
 from routes.models import db, CompanyLogin, CompanyAccount, OutstandingRequest
 
 
