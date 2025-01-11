@@ -1,10 +1,14 @@
 from flask import Blueprint, request, jsonify
+from models import db, CompanyAccount
 
 def createRequestFunction(connection):
     # Just template
-    with connection.cursor(dictionary=True) as cursor:
-        cursor.execute("SELECT * FROM posts;")
-        result = cursor.fetchall()
-        cursor.close()
-    return result,200
+    data = request.json  # Parse the JSON payload
+    username = data.get('username')
+
+    user = CompanyAccount.query.filter_by(companyId=username).first()
+
+    # All the functions
+
+    return jsonify({}),200
  
