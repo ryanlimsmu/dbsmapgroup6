@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
-from routes.models import db, CompanyAccount
+from routes.models import db, CompanyAccount, OutstandingRequest
+from flask_jwt_extended import get_jwt_identity
 
 def deleteRequestFunction(request_id):
     try:
