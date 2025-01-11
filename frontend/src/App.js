@@ -23,7 +23,7 @@ function App() {
           {<Route path='/signup' element={<Signup />} /> }
 
           {/* Home page  */}
-          {/* <Route path='/home' element={} /> */}
+          <Route path='/home' element={<p>hello world</p>} />
 
           {/* Requests received page */}
           <Route path='/requests' element={<Requests />} />
