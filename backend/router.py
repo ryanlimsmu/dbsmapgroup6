@@ -1,4 +1,6 @@
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import JWTManager
+
 from routes.createRequest import createRequestFunction
 from routes.deleteRequest import deleteRequestFunction
 from routes.login import loginFunction
@@ -12,6 +14,7 @@ from routes.updateAlerts import updateAlertsFunction
 from routes.readAllCompanies import readAllCompaniesFunction
 
 posts = Blueprint('posts', __name__)
+jwt = JWTManager()
 
 def configure_routes(app, connection):
     

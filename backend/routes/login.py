@@ -13,10 +13,10 @@ def loginFunction():
 
     if user:
         access_token = create_access_token(
-            identity=str(user.companyUsername),
+            identity=str(user.username),
             expires_delta=timedelta(hours=1),
             additional_claims={"roles": "ROLE_USER"}
         )
-        return jsonify({"access_token": access_token, "message": f"Welcome, {user.FirstName}!"}), 200
+        return jsonify({"access_token": access_token, "message": f"Welcome, {user.username}!"}), 200
     else:
         return jsonify({"error": "Invalid username or password"}), 401

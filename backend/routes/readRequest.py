@@ -1,13 +1,54 @@
 from flask import Blueprint, request, jsonify
-from routes.models import db, CompanyAccount
+from flask_jwt_extended import get_jwt_identity
+from sqlalchemy.orm import joinedload
 
-def readRequestFunction(connection):
-    # Just template
-    data = request.json  # Parse the JSON payload
-    username = data.get('username')
+from backend.routes.models import db, CompanyLogin, CompanyAccount, OutstandingRequest
 
-    user = CompanyAccount.query.filter_by(companyId=username).first()
 
-    # All the functions
+def readRequestFunction():
+    try:
+        # Retrieve the logged-in user's ID from the JWT
+        user_id = get_jwt_identity()
 
-    return jsonify({}),200
+        if not user_id:
+            return jsonify({"error": "Unauthorized"}), 401
+
+        # Step 1: Fetch user to ensure they exist
+        user = db.session.query(CompanyLogin).filter_by(id=user_id).first()
+        if not user:
+            return jsonify({"error": "User not found"}), 404
+
+        # Step 2: Fetch requests associated with the user
+        requests = (
+            db.session.query(OutstandingRequest)
+            .filter(OutstandingRequest.companyId == user_id)
+            .all()
+        )
+
+        if not requests:
+            # If no claims exist, return empty categories
+            return jsonify({"message": "No requests found."}), 200
+
+        # Step 3: Organize requests
+        result = {"requests": []}
+
+        for request in requests:
+            request_data = {
+                "companyId": request.companyId,
+                "requestorCompanyId": request.requestorCompanyId,
+                "carbonUnitPrice": request.carbonUnitPrice,
+                "carbonQuantity": request.carbonQuantity,
+                "requestReason": request.requestReason,
+                "requestStatus": request.requestStatus,
+                "requestType": request.requestType,
+                "createdDatetime": request.createdDatetime,
+                "updatedDatetime": request.updatedDatetime
+            }
+            # Categorize claims based on status
+            result["requests"].append(request_data)
+
+        return jsonify(result), 200
+
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify({"error": "Failed to process the request"}), 422
