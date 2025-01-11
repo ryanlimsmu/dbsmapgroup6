@@ -9,7 +9,7 @@ def loginFunction():
     username = data.get('username')  # Assuming username maps to EmployeeID
     password = data.get('password')  # Assuming password maps to Password
 
-    user = CompanyLogin.query.filter_by(companyUsername=username, companyPassword=password).first()
+    user = CompanyLogin.query.filter_by(username=username, password=password).first()
 
     if user:
         access_token = create_access_token(

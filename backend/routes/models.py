@@ -5,12 +5,16 @@ db = SQLAlchemy()
 
 class CompanyLogin(db.Model):
     __tablename__ ="companylogin"
-    companyId = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    companyUsername = db.Column(db.String(256), unique=True, nullable=False)
-    companyPassword = db.Column(db.String(256), nullable=False)
-    company = db.relationship('CompanyAccount', foreign_keys=[companyId], backref='outstanding_requests')
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    companyName = db.Column(db.String(256), nullable=False)
+    username = db.Column(db.String(256), unique=True, nullable=False)
+    password = db.Column(db.String(256), nullable=False)
+    FK_companyId = db.Column(db.Integer, db.ForeignKey('companyaccount.companyId', ondelete='CASCADE', onupdate='CASCADE'), nullable=False)
+
+    company = db.relationship('CompanyAccount', foreign_keys=[FK_companyId], backref='CompanyLogin')
+
     def __repr__(self):
-        return f"<CompanyLogin(companyId={self.companyId}, companyUsername={self.companyUsername})>"
+        return f"<CompanyLogin(companyId={self.companyId}, username={self.username})>"
 
 class CompanyAccount(db.Model):
     __tablename__ = 'companyaccount'
@@ -40,8 +44,8 @@ class OutstandingRequest(db.Model):
     createdDatetime = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updatedDatetime = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
-    company = db.relationship('CompanyAccount', foreign_keys=[companyId], backref='outstanding_requests')
-    requestorCompany = db.relationship('CompanyAccount', foreign_keys=[requestorCompanyId], backref='requests_made')
+    company = db.relationship('CompanyAccount', foreign_keys=[companyId], backref='OutstandingRequest')
+    requestorCompany = db.relationship('CompanyAccount', foreign_keys=[requestorCompanyId], backref='RequestReceived')
 
     def __repr__(self):
         return f"<OutstandingRequest(id={self.id}, companyId={self.companyId}, requestorCompanyId={self.requestorCompanyId})>"
@@ -58,7 +62,7 @@ class RequestReceived(db.Model):
     createdDatetime = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updatedDatetime = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
-    request = db.relationship('OutstandingRequest', backref='received_requests')
+    request = db.relationship('OutstandingRequest', backref='RequestReceived')
 
     def __repr__(self):
         return f"<RequestReceived(id={self.id}, requestId={self.requestId})>"

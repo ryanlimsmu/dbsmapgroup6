@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 import mysql.connector
+from backend.routes.models import db
 
 # Load environment variables
 load_dotenv()
@@ -10,6 +11,7 @@ def create_app():
     app = Flask(__name__)
     app.config['DEBUG'] = os.getenv('FLASK_ENV') == 'development'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.getenv('FLASK_ENV') == 'development'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{os.getenv('MYSQL_USER')}:{os.getenv('MYSQL_PASSWORD')}@{os.getenv('MYSQL_HOST')}/{os.getenv('MYSQL_DATABASE')}"
 
     try:
         connection = mysql.connector.connect(
@@ -18,6 +20,7 @@ def create_app():
             password=os.getenv('MYSQL_PASSWORD'),
             database=os.getenv('MYSQL_DATABASE'),
         )
+        db.init_app(app)
         print("Connection successful!")
     except Exception as e:
         print(f"Connection failed: {e}")
