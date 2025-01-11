@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import Link for navigation
 import '../../css/Login.css'; // Import the CSS for styling
 import InputField from './InputField';
-import userService from '../../services/users';
+import userService from '../../services/login';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -63,7 +63,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="left-side">
-        <h1 className="title">PeerPrep</h1>
+        <h1 className="title">DBS Techtrek 2025</h1>
         <h2 className="subtitle">Sign In</h2>
       </div>
       <div className="right-side">
@@ -71,9 +71,9 @@ const Login = () => {
           <form onSubmit={handleLogin}>
             <div>
               <InputField 
-              label="Email" 
-              type="email" 
-              placeholder="Enter your email" 
+              label="Company User Name" 
+              type="text" 
+              placeholder="Enter your company user name" 
               onChange={(e) => {
                 setEmail(e.target.value)
                 setEmailError(false);
