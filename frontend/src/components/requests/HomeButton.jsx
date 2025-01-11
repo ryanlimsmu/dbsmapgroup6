@@ -11,9 +11,12 @@ const HomeButton = ({ onDelete }) => {
   return (
     <div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <button style={{ color: 'blue' }}type='button'>Edit</button>
         <button style={{ color: 'red' }}type='button'>Delete</button>
 =======
+=======
+>>>>>>> Stashed changes
       <button style={{ backgroundColor: 'blue' }} type="button">
         Edit
       </button>
@@ -24,6 +27,9 @@ const HomeButton = ({ onDelete }) => {
       >
         Delete
       </button>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     </div>
   );
