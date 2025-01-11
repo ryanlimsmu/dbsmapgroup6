@@ -2,7 +2,6 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import get_jwt_identity
 from routes.models import db, OutstandingRequest
 
-
 def deleteRequestFunction(request_id):
     try:
         # Step 1: Retrieve the logged-in user's ID from the JWT
