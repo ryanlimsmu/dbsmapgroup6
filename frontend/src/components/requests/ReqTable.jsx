@@ -3,14 +3,13 @@ import '../../css/ReqTable.css'
 import ReqButtons from './ReqButtons'
 import HomeButton from './HomeButton'
 
-const ReqTable = ( { isHomePage, requests, onAccept, onReject } ) => {
+const ReqTable = ( { isHomePage, requests, onAccept, onReject, onAcceptAll, onRejectAll } ) => {
   return (
     <div className='container'>
       <table>
         <tr>
-          { !isHomePage && <th><input type="checkbox"></input></th> }
           <th>Request date</th>
-          <th>{ isHomePage ? "Requester Company Name" : "Company Name"}</th>
+          <th>{ !isHomePage ? "Requester Company Name" : "Company Name"}</th>
           <th>Carbon Price</th>
           <th>Carbon Quantity</th>
           <th>Requesting Reason</th>
@@ -20,7 +19,6 @@ const ReqTable = ( { isHomePage, requests, onAccept, onReject } ) => {
       <tbody>
         {requests.map((req) => ( 
           <tr>
-            { !isHomePage && <td></td>}
             <td>{req.request_date}</td>
             <td>{req.company_name}</td>
             <td>{req.carbon_price}</td>
@@ -32,6 +30,10 @@ const ReqTable = ( { isHomePage, requests, onAccept, onReject } ) => {
           ))}
       </tbody>
     </table>
+    <div style={{ display: 'inline' }}>
+      <button type='button' onClick={onAcceptAll}>Accept All</button>
+      <button type='button' onClick={onRejectAll}>Reject All</button>
+    </div>
    </div>
   )
 }

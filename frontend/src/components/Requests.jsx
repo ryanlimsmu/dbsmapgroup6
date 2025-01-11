@@ -1,10 +1,11 @@
 import React from 'react'
+import { useState } from 'react'
 import Navbar from './requests/Navbar'
 import Req_table from './requests/ReqTable'
 
 const Requests = () => {
-  // dummy data 
-  const requests = [
+
+  const [requests, setRequests] = useState([
     {
         id: 1,
         request_date: "11/07/2020",
@@ -14,12 +15,30 @@ const Requests = () => {
         requesting_reason: "ABCD",
         request_type: "Buy"
     }
-  ]
+  ])
+
+  const onAccept = (req_id) => {
+    console.log('onAccept is clicked');
+  }
+
+  const onReject = (req_id) => {
+    console.log('onReject is clicked');
+  }
+
+  const onAcceptAll = () => {
+    const req_ids = [requests.map((req) => req.id)];
+    console.log(req_ids);
+  }
+
+  const onRejectAll = () => {
+    const req_ids = [requests.map((req) => req.id)];
+    console.log('onRejectall is clicked');
+  } 
 
   return (
     <div>
         <Navbar />
-        <Req_table isHomePage={ false } requests={ requests }/>
+        <Req_table isHomePage={ false } requests={ requests } onAccept={onAccept} onReject={onReject} onAcceptAll={onAcceptAll} onRejectAll={onRejectAll}/>
     </div>
   )
 }
