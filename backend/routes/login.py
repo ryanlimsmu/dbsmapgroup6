@@ -9,14 +9,22 @@ def loginFunction():
     username = data.get('username')  # Assuming username maps to EmployeeID
     password = data.get('password')  # Assuming password maps to Password
 
-    user = CompanyLogin.query.filter_by(username=username, password=password).first()
+    # Check if user exists
+    user = CompanyLogin.query.filter_by(username=username).first()
 
     if user:
-        access_token = create_access_token(
-            identity=str(user.username),
-            expires_delta=timedelta(hours=1),
-            additional_claims={"roles": "ROLE_USER"}
-        )
-        return jsonify({"access_token": access_token, "message": f"Welcome, {user.username}!"}), 200
+
+        # Check if password is correct
+        if user.password != password:
+            return jsonify({"error": "Wrong password"}), 401
+        
+        else:
+            access_token = create_access_token(
+                identity=str(user.username),
+                expires_delta=timedelta(hours=1),
+                additional_claims={"roles": "ROLE_USER"}
+            )
+            return jsonify({"access_token": access_token, "message": f"Welcome, {user.username}!"}), 200
+        
     else:
-        return jsonify({"error": "Invalid username or password"}), 401
+        return jsonify({"error": "Company not found"}), 404

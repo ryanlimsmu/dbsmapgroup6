@@ -1,7 +1,17 @@
+import React from 'react';
+import Login from './components/auth/Login';
+import Signup from './components/auth/Signup';
 import logo from './logo.svg';
+<<<<<<< HEAD
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 // import Login from './components/auth/Login'
 import Requests from './components/Requests'
+=======
+
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+// import Login from './components/auth/Login'
+// import Requests from './components/Requests'
+>>>>>>> haoying
 //import './App.css';
 
 function App() {
@@ -14,13 +24,23 @@ function App() {
           <Route path='/' element={<Navigate to='/requests' />} />
 
           {/* Login page route */}
+<<<<<<< HEAD
           {/* <Route path='/login' element={<Login />} /> */}
+=======
+          {<Route path='/login' element={<Login />} /> }
+
+          {/* Signup page route */}
+          {<Route path='/signup' element={<Signup />} /> }
+>>>>>>> haoying
 
           {/* Home page  */}
           {/* <Route path='/home' element={} /> */}
 
+<<<<<<< HEAD
           {/* Requests received page */}
           <Route path='/requests' element={<Requests />} />
+=======
+>>>>>>> haoying
         </Routes>
       </BrowserRouter>
     </div>

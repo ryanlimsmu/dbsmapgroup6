@@ -55,8 +55,8 @@ def configure_routes(app, connection):
         return readIncomingFunction(connection)
 
     # 8
-    @app.route('/updateIncomings', methods=['GET'])
-    def updateIncoming():
+    @app.route('/updateIncoming/<int:request_id>', methods=['PUT'])
+    def updateIncoming(request_id):
         return updateIncomingFunction(connection)
     
     # 9

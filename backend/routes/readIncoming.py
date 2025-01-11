@@ -1,13 +1,33 @@
 from flask import Blueprint, request, jsonify
+<<<<<<< HEAD
+from flask_jwt_extended import get_jwt_identity
+from routes.models  import db, OutstandingRequest
+=======
 from routes.models import db, CompanyAccount
+>>>>>>> haoying
 
-def readIncomingFunction(connection):
-    # Just template
-    data = request.json  # Parse the JSON payload
-    username = data.get('username')
+def readAllCompaniesFunction(connection):
+    data = request.get_json()
 
-    user = CompanyAccount.query.filter_by(companyId=username).first()
+    # JWT Authentication
+    companyId = get_jwt_identity()
 
-    # All the functions
+    if companyId is None:
+        return jsonify({'error': 'Unauthorized read request'}), 401
+    
+    # Retrieve all incoming outstanding requests from the database (with requestStatus = 'Pending') corresponding to the current company
+    requests = OutstandingRequest.query.filter(OutstandingRequest.companyId == companyId, OutstandingRequest.requestStatus == 'Pending').all()
 
-    return jsonify({}),200
+    requestsList = []
+    for request in requests:
+        requestsList.append({
+            'requestId': request.id,
+            'requestDatetime': request.requestDatetime,
+            'companyId': request.requestorcompanyId,
+            'carbonUnitPrice': request.carbonUnitPrice,
+            'carbonQuantity': request.carbonQuantity,
+            'requestReason': request.requestReason,
+            'requestType': request.requestType
+        })
+    
+    return jsonify(requestsList), 200
