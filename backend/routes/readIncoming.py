@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import get_jwt_identity
 from routes.models  import db, OutstandingRequest
 
-def readAllCompaniesFunction(connection):
+def readIncomingFunction(connection):
     data = request.get_json()
 
     # JWT Authentication
