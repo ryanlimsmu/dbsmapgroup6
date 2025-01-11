@@ -1,5 +1,7 @@
 import React from 'react'
 import '../../css/ReqTable.css'
+import ReqButtons from './ReqButtons'
+import HomeButton from './HomeButton'
 
 const ReqTable = ( { isHomePage, requests } ) => {
   return (
@@ -13,6 +15,7 @@ const ReqTable = ( { isHomePage, requests } ) => {
           <th>Carbon Quantity</th>
           <th>Requesting Reason</th>
           <th>Request Type</th>
+          <th>Action</th>
         </tr>
       <tbody>
         {requests.map((req) => ( 
@@ -24,6 +27,7 @@ const ReqTable = ( { isHomePage, requests } ) => {
             <td>{req.carbon_qty}</td>
             <td>{req.requesting_reason}</td>
             <td>{req.request_type}</td>
+            <td>{ isHomePage ? <HomeButton /> : <ReqButtons /> }</td>
           </tr>
           ))}
       </tbody>
