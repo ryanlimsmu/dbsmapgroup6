@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://';
-const auth = "auth"
+const baseUrl = 'http://localhost:3307';
 const user = "users"
 
 const createUser = async (newUser) => {
@@ -15,7 +14,7 @@ const getUser = async (id, jwt_token) => {
 };
 
 const loginUser = async (userCredentials) => {
-    const response = await axios.post(`${baseUrl}/${auth}/login`, userCredentials);
+    const response = await axios.post(`${baseUrl}/login`, userCredentials);
     return response;
 }
 
