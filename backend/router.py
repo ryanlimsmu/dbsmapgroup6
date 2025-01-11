@@ -65,7 +65,7 @@ def configure_routes(app, connection):
         return readAlertsFunction(connection)
     
     # 10
-    @app.route('/updateAlerts', methods=['GET'])
+    @app.route('/updateAlerts', methods=['PUT'])
     def updateAlerts():
         return updateAlertsFunction(connection)
     
