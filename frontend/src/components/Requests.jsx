@@ -1,4 +1,5 @@
 import React from 'react'
+import Navbar from './requests/Navbar'
 import Req_table from './requests/ReqTable'
 
 const Requests = () => {
@@ -15,7 +16,10 @@ const Requests = () => {
   ]
 
   return (
-    <Req_table isHomePage={ false } requests={ requests }/>
+    <div>
+        <Navbar />
+        <Req_table isHomePage={ false } requests={ requests }/>
+    </div>
   )
 }
 
