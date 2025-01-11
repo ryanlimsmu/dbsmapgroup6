@@ -23,16 +23,15 @@ def updateIncomingFunction(request_id):
         if not request:
             return jsonify({"error": "Claim not found or not authorized"}), 404
 
-        # Step 4: Update the request status
+        # Step 3: Update the request status
         data = request.get_json()
         request.id = data.get('requestId', request.id)
         request.Status = data.get('requestStatus', request.Status)
-
         request.LastEditedClaimDate = datetime.now()
 
         db.session.commit()
 
-        return jsonify({"message": "Claim updated successfully!"}), 200
+        return jsonify({"message": "Incoming updated successfully!"}), 200
 
     except Exception as e:
         print(f"Error in update_claim: {e}")
