@@ -47,6 +47,6 @@ def configure_routes(app, connection):
         updateIncomingFunction(connection)
 
     # Please update the route and method
-    @app.route('/api/posts', methods=['GET'])
+    @app.route('/api/updateRequest', methods=['PUT'])
     def updateRequest():
-        updateRequestFunction(connection)
+        updateRequestFunction()
