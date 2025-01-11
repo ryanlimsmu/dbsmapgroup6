@@ -2,6 +2,11 @@ import os
 from dotenv import load_dotenv
 import mysql.connector
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+from flask_jwt_extended import JWTManager
+
+>>>>>>> Stashed changes
 =======
 from flask_jwt_extended import JWTManager
 
