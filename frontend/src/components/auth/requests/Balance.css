@@ -1,0 +1,31 @@
+.balance-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-top: 2px solid #ccc;
+  }
+  
+  .balance-label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 50px; /* Space between the label and the balances */
+    color: red
+  }
+  
+  .balance-values {
+    display: flex;
+    align-items: center;
+  }
+  
+  .balance-item {
+    margin-right: 50px; /* Space between carbon and cash balances */
+    font-size: 16px;
+  }
+  
+  .balance-item strong {
+    font-weight: bold;
+    color: #333;
+  }
+  
