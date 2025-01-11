@@ -2,9 +2,7 @@ from datetime import datetime
 
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import get_jwt_identity
-from routes.models  import db, CompanyAccount
-
-from backend.routes.models import OutstandingRequest
+from routes.models  import db, CompanyAccount, OutstandingRequest
 
 
 def updateIncomingFunction(request_id):

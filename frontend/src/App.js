@@ -1,3 +1,6 @@
+import React from 'react';
+import Login from './components/auth/Login';
+import Signup from './components/auth/Signup';
 import logo from './logo.svg';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 // import Login from './components/auth/Login'
@@ -14,10 +17,13 @@ function App() {
           <Route path='/' element={<Navigate to='/requests' />} />
 
           {/* Login page route */}
-          {/* <Route path='/login' element={<Login />} /> */}
+          {<Route path='/login' element={<Login />} /> }
+
+          {/* Signup page route */}
+          {<Route path='/signup' element={<Signup />} /> }
 
           {/* Home page  */}
-          {/* <Route path='/home' element={} /> */}
+          <Route path='/home' element={<p>hello world</p>} />
 
           {/* Requests received page */}
           <Route path='/requests' element={<Requests />} />
