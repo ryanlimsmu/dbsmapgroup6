@@ -5,18 +5,18 @@ import InputField from './InputField';
 import userService from '../../services/login';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [emailError, setEmailError] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    const userCredentials = {email, password};
-    console.log('Logging in with:', { email, password });
+    const userCredentials = {username, password};
+    console.log('Logging in with:', { username, password });
 
     // call the login user API
     userService.loginUser(userCredentials)
@@ -39,12 +39,12 @@ const Login = () => {
         switch (e.response.status) {
           case 400:
             setError(e.response.data.message); // Missing email and/or password
-            setEmailError(true);
+            setUsernameError(true);
             setPasswordError(true);
             break;
           case 401:
             setError(e.response.data.message); // Wrong email and/or password
-            setEmailError(true);
+            setUsernameError(true);
             setPasswordError(true); 
             break;
           case 500:
@@ -75,10 +75,10 @@ const Login = () => {
               type="text" 
               placeholder="Enter your company user name" 
               onChange={(e) => {
-                setEmail(e.target.value)
-                setEmailError(false);
+                setUsername(e.target.value)
+                setUsernameError(false);
               }}
-              error={emailError}
+              error={usernameError}
               required
               />
               <InputField label="Password" 
@@ -103,6 +103,8 @@ const Login = () => {
         </div>
       </div>
     </div>
+
+    
   );
 };
 
