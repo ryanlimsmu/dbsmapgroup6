@@ -7,46 +7,65 @@ from routes.readIncoming import readIncomingFunction
 from routes.readRequest import readRequestFunction
 from routes.updateIncoming import updateIncomingFunction
 from routes.updateRequest import updateRequestFunction
+from routes.readAlerts import readAlertsFunction
+from routes.updateAlerts import updateAlertsFunction
+from routes.readAllCompanies import readAllCompaniesFunction
 
 posts = Blueprint('posts', __name__)
 
 def configure_routes(app, connection):
-    # Please update the route and method
-    @app.route('/api/posts', methods=['GET'])
-    def createRequest():
-        return createRequestFunction(connection)
-
-    # Please update the route and method
-    @app.route('/api/posts', methods=['GET'])
-    def deleteRequest():
-        return deleteRequestFunction(connection)
     
-    # Please update the route and method
-    @app.route('/api/login', methods=['POST'])
+    # 1
+    @app.route('/login', methods=['POST'])
     def login():
         return loginFunction()
-        
-    # Please update the route and method
-    @app.route('/api/posts', methods=['GET'])
+    
+    # 2
+    @app.route('/readAccount', methods=['GET'])
     def readAccount():
         return readAccountFunction(connection)
     
-    # Please update the route and method
-    @app.route('/api/posts', methods=['GET'])
+    # 3
+    @app.route('/createRequest', methods=['GET'])
+    def createRequest():
+        return createRequestFunction(connection)
+    
+    # 4
+    @app.route('/readRequests', methods=['GET'])
+    def readRequest():
+        return readRequestFunction(connection)
+    
+    # 5
+    @app.route('/updateRequest', methods=['GET'])
+    def updateRequest():
+        return updateRequestFunction(connection)
+
+    # 6
+    @app.route('/deleteRequest', methods=['GET'])
+    def deleteRequest():
+        return deleteRequestFunction(connection)
+    
+    # 7
+    @app.route('/readIncomings', methods=['GET'])
     def readIncoming():
         return readIncomingFunction(connection)
 
-    # Please update the route and method
-    @app.route('/api/posts', methods=['GET'])
-    def readRequest():
-        readRequestFunction(connection)
-
-    # Please update the route and method
-    @app.route('/api/posts', methods=['GET'])
+    # 8
+    @app.route('/updateIncomings', methods=['GET'])
     def updateIncoming():
-        updateIncomingFunction(connection)
-
-    # Please update the route and method
-    @app.route('/api/posts', methods=['GET'])
-    def updateRequest():
-        updateRequestFunction(connection)
+        return updateIncomingFunction(connection)
+    
+    # 9
+    @app.route('/readAlerts', methods=['GET'])
+    def readAlerts():
+        return readAlertsFunction(connection)
+    
+    # 10
+    @app.route('/updateAlerts', methods=['GET'])
+    def updateAlerts():
+        return updateAlertsFunction(connection)
+    
+    # 11
+    @app.route('/readAllCompanies', methods=['GET'])
+    def readAllCompanies():
+        return readAllCompaniesFunction(connection)
