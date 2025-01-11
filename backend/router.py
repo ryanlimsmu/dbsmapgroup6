@@ -14,12 +14,12 @@ def configure_routes(app, connection):
     # Please update the route and method
     @app.route('/api/posts', methods=['GET'])
     def createRequest():
-        createRequestFunction(connection)
+        return createRequestFunction(connection)
 
     # Please update the route and method
     @app.route('/api/posts', methods=['GET'])
     def deleteRequest():
-        deleteRequestFunction(connection)
+        return deleteRequestFunction(connection)
     
     # Please update the route and method
     @app.route('/api/login', methods=['POST'])
@@ -29,12 +29,12 @@ def configure_routes(app, connection):
     # Please update the route and method
     @app.route('/api/posts', methods=['GET'])
     def readAccount():
-        readAccountFunction(connection)
+        return readAccountFunction(connection)
     
     # Please update the route and method
     @app.route('/api/posts', methods=['GET'])
     def readIncoming():
-        readIncomingFunction(connection)
+        return readIncomingFunction(connection)
 
     # Please update the route and method
     @app.route('/api/posts', methods=['GET'])

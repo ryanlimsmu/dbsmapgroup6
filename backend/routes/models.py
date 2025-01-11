@@ -24,8 +24,8 @@ class CompanyAccount(db.Model):
     activeAccount = db.Column(db.Boolean, nullable=False)
     carbonBalance = db.Column(db.Integer, nullable=False)
     cashBalance = db.Column(db.Float, nullable=False)
-    createdDatetime = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-    updatedDatetime = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    createdDatetime = db.Column(db.DateTime, default=datetime.now, nullable=False)
+    updatedDatetime = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
 
     def __repr__(self):
         return f"<CompanyAccount(companyId={self.companyId}, companyName='{self.companyName}')>"
@@ -41,8 +41,8 @@ class OutstandingRequest(db.Model):
     requestReason = db.Column(db.Text, nullable=True)
     requestStatus = db.Column(db.String(50), nullable=False)
     requestType = db.Column(db.String(50), nullable=False)
-    createdDatetime = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-    updatedDatetime = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    createdDatetime = db.Column(db.DateTime, default=datetime.now, nullable=False)
+    updatedDatetime = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
 
     company = db.relationship('CompanyAccount', foreign_keys=[companyId], backref='OutstandingRequest')
     requestorCompany = db.relationship('CompanyAccount', foreign_keys=[requestorCompanyId], backref='RequestReceived')
@@ -59,8 +59,8 @@ class RequestReceived(db.Model):
     alertText = db.Column(db.Text, nullable=False)
     alertStatus = db.Column(db.String(50), nullable=False)
     alertViewDate = db.Column(db.DateTime, nullable=True)
-    createdDatetime = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-    updatedDatetime = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    createdDatetime = db.Column(db.DateTime, default=datetime.now, nullable=False)
+    updatedDatetime = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
 
     request = db.relationship('OutstandingRequest', backref='RequestReceived')
 
