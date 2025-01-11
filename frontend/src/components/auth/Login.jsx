@@ -2,21 +2,26 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import Link for navigation
 // import '../../css/Login.css'; // Import the CSS for styling
 import InputField from './InputField';
+<<<<<<< HEAD
 // import userService from '../../services/users';
 /*
+=======
+import userService from '../../services/login';
+
+>>>>>>> haoying
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [emailError, setEmailError] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    const userCredentials = {email, password};
-    console.log('Logging in with:', { email, password });
+    const userCredentials = {username, password};
+    console.log('Logging in with:', { username, password });
 
     // call the login user API
     userService.loginUser(userCredentials)
@@ -39,12 +44,12 @@ const Login = () => {
         switch (e.response.status) {
           case 400:
             setError(e.response.data.message); // Missing email and/or password
-            setEmailError(true);
+            setUsernameError(true);
             setPasswordError(true);
             break;
           case 401:
             setError(e.response.data.message); // Wrong email and/or password
-            setEmailError(true);
+            setUsernameError(true);
             setPasswordError(true); 
             break;
           case 500:
@@ -63,7 +68,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="left-side">
-        <h1 className="title">PeerPrep</h1>
+        <h1 className="title">DBS Techtrek 2025</h1>
         <h2 className="subtitle">Sign In</h2>
       </div>
       <div className="right-side">
@@ -71,14 +76,14 @@ const Login = () => {
           <form onSubmit={handleLogin}>
             <div>
               <InputField 
-              label="Email" 
-              type="email" 
-              placeholder="Enter your email" 
+              label="Company User Name" 
+              type="text" 
+              placeholder="Enter your company user name" 
               onChange={(e) => {
-                setEmail(e.target.value)
-                setEmailError(false);
+                setUsername(e.target.value)
+                setUsernameError(false);
               }}
-              error={emailError}
+              error={usernameError}
               required
               />
               <InputField label="Password" 
@@ -103,6 +108,8 @@ const Login = () => {
         </div>
       </div>
     </div>
+
+    
   );
 };
 
