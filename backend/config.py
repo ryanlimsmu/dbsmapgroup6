@@ -1,13 +1,8 @@
 import os
 from dotenv import load_dotenv
 import mysql.connector
-<<<<<<< HEAD
 from flask_jwt_extended import JWTManager
-
-from backend.routes.models import db
-=======
 from routes.models import db
->>>>>>> haoying
 
 # Load environment variables
 load_dotenv()
