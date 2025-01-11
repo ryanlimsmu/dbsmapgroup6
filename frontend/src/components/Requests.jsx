@@ -6,6 +6,7 @@ const Requests = () => {
   // dummy data 
   const requests = [
     {
+        id: 1,
         request_date: "11/07/2020",
         company_name: "ABC",
         carbon_price: 11,

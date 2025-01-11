@@ -3,7 +3,7 @@ import '../../css/ReqTable.css'
 import ReqButtons from './ReqButtons'
 import HomeButton from './HomeButton'
 
-const ReqTable = ( { isHomePage, requests } ) => {
+const ReqTable = ( { isHomePage, requests, onAccept, onReject } ) => {
   return (
     <div className='container'>
       <table>
@@ -27,7 +27,7 @@ const ReqTable = ( { isHomePage, requests } ) => {
             <td>{req.carbon_qty}</td>
             <td>{req.requesting_reason}</td>
             <td>{req.request_type}</td>
-            <td>{ isHomePage ? <HomeButton /> : <ReqButtons /> }</td>
+            <td>{ isHomePage ? <HomeButton /> : <ReqButtons onAccept={onAccept} onReject={onReject} req_id={req.id}/> }</td>
           </tr>
           ))}
       </tbody>
