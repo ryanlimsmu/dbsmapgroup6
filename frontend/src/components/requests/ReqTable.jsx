@@ -1,39 +1,47 @@
-import React from 'react'
-import '../../css/ReqTable.css'
-import ReqButtons from './ReqButtons'
-import HomeButton from './HomeButton'
+import React from 'react';
+import '../../css/ReqTable.css';
+import ReqButtons from './ReqButtons';
+import HomeButton from './HomeButton';
 
-const ReqTable = ( { isHomePage, requests } ) => {
+const ReqTable = ({ isHomePage, requests, onDelete }) => {
   return (
-    <div>
+    <div className="container">
       <table>
-        <tr>
-          { !isHomePage && <th><input type="checkbox"></input></th> }
-          <th>Request date</th>
-          <th>{ isHomePage ? "Requester Company Name" : "Company Name"}</th>
-          <th>Carbon Price</th>
-          <th>Carbon Quantity</th>
-          <th>Requesting Reason</th>
-          <th>Request Type</th>
-          <th>Action</th>
-        </tr>
-      <tbody>
-        {requests.map((req) => ( 
+        <thead>
           <tr>
-            { !isHomePage && <td></td>}
-            <td>{req.request_date}</td>
-            <td>{req.company_name}</td>
-            <td>{req.carbon_price}</td>
-            <td>{req.carbon_qty}</td>
-            <td>{req.requesting_reason}</td>
-            <td>{req.request_type}</td>
-            <td>{ isHomePage ? <HomeButton /> : <ReqButtons /> }</td>
+            {!isHomePage && <th><input type="checkbox" /></th>}
+            <th>Request Date</th>
+            <th>{isHomePage ? "Requester Company Name" : "Company Name"}</th>
+            <th>Carbon Price</th>
+            <th>Carbon Quantity</th>
+            <th>Requesting Reason</th>
+            <th>Request Type</th>
+            <th>Action</th>
           </tr>
+        </thead>
+        <tbody>
+          {requests.map((req) => (
+            <tr key={req.id}>
+              {!isHomePage && <td></td>}
+              <td>{req.request_date}</td>
+              <td>{req.company_name}</td>
+              <td>{req.carbon_price}</td>
+              <td>{req.carbon_qty}</td>
+              <td>{req.requesting_reason}</td>
+              <td>{req.request_type}</td>
+              <td>
+                {isHomePage ? (
+                  <HomeButton onDelete={() => onDelete(req.id)} />
+                ) : (
+                  <ReqButtons />
+                )}
+              </td>
+            </tr>
           ))}
-      </tbody>
-    </table>
-   </div>
-  )
-}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
-export default ReqTable
+export default ReqTable;

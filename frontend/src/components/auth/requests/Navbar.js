@@ -1,9 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+import { Link, useNavigate } from 'react-router-dom';
+import '../../css/Navbar.css';
 import logo from '../../DBS.png';
 
 const Navbar = () => {
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    navigate('/login')
+  }
+
   return (
     <nav className="navbar">
       <div className="navbar-left">
@@ -13,7 +18,7 @@ const Navbar = () => {
         <Link to="/requests" className="navbar-link">Requests</Link>
       </div>
       <div className="navbar-right">
-        <button className="navbar-button" onClick={() => alert('Logging out...')}>
+        <button className="navbar-button" onClick={(handleLogout)}>
           Logout
         </button>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/auth/requests/Navbar';
-import Balance from '../components/auth/requests/Balance';
+import Navbar from '../components/requests/Navbar';
+import Balance from '../components/requests/Balance';
 
 function landing() {
     return (

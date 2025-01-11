@@ -1,5 +1,5 @@
 import React from 'react';
-import './Balance.css';
+import '../../css/Balance.css';
 
 const Balance = ({ carbonBalance, cashBalance }) => {
   return (
@@ -7,10 +7,10 @@ const Balance = ({ carbonBalance, cashBalance }) => {
       <div className="balance-label">Balance</div>
       <div className="balance-values">
         <div className="balance-item">
-          <strong>Carbon:</strong> {carbonBalance} kg CO₂
+          <strong>Carbon:</strong> {carbonBalance ? carbonBalance > 0 : 0} kg CO₂
         </div>
         <div className="balance-item">
-          <strong>Cash:</strong> ${cashBalance}
+          <strong>Cash:</strong> ${cashBalance ? cashBalance : 0}
         </div>
       </div>
     </div>
