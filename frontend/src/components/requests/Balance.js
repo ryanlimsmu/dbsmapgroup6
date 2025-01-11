@@ -1,5 +1,5 @@
 import React from 'react';
-import './Balance.css';
+import '../../css/Balance.css';
 
 const Balance = ({ carbonBalance, cashBalance }) => {
   return (

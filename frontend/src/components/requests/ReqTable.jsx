@@ -5,7 +5,7 @@ import HomeButton from './HomeButton'
 
 const ReqTable = ( { isHomePage, requests } ) => {
   return (
-    <div>
+    <div className='container'>
       <table>
         <tr>
           { !isHomePage && <th><input type="checkbox"></input></th> }
