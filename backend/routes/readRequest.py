@@ -34,15 +34,13 @@ def readRequestFunction():
 
         for request in requests:
             request_data = {
-                "companyId": request.companyId,
-                "requestorCompanyId": request.requestorCompanyId,
-                "carbonUnitPrice": request.carbonUnitPrice,
+                "id": request.id,
+                "requestDate": request.createdDatetime,
+                "companyName": request.requestorCompanyId,
+                "carbonPrice": request.carbonUnitPrice,
                 "carbonQuantity": request.carbonQuantity,
                 "requestReason": request.requestReason,
-                "requestStatus": request.requestStatus,
                 "requestType": request.requestType,
-                "createdDatetime": request.createdDatetime,
-                "updatedDatetime": request.updatedDatetime
             }
             # Categorize claims based on status
             result["requests"].append(request_data)
