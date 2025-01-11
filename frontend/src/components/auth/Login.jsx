@@ -23,7 +23,7 @@ const Login = () => {
     .then(result => {
       // navigate to home page if successful
       console.log(result);
-      const jwt_token = result.data.data.accessToken;
+      const jwt_token = result.data.access_token;
 
       if (jwt_token) {
         sessionStorage.setItem('jwt_token', jwt_token);
