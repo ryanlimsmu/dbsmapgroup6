@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import Navbar from './requests/Navbar'
 import Req_table from './requests/ReqTable'
+import Alert_table from './requests/AlertTable'
 
 const Requests = () => {
 
@@ -16,6 +17,12 @@ const Requests = () => {
         request_type: "Buy"
     }
   ])
+
+  const [alert, setAlert] = useState(true)
+
+  const toggleAlert = () => {
+    setAlert(!alert)
+  }
 
   const onAccept = (req_id) => {
     console.log('onAccept is clicked');
@@ -38,6 +45,7 @@ const Requests = () => {
   return (
     <div>
         <Navbar />
+        {alert && <Alert_table alertRequests={ requests } toggleAlert={ toggleAlert } onAccept={onAccept} onReject={onReject} />} {/* To change */}
         <Req_table isHomePage={ false } requests={ requests } onAccept={onAccept} onReject={onReject} onAcceptAll={onAcceptAll} onRejectAll={onRejectAll}/>
     </div>
   )
