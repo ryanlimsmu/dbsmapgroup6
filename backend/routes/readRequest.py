@@ -11,7 +11,7 @@ def readRequestFunction():
         user_id = get_jwt_identity()
 
         if not user_id:
-            return jsonify({"error": "Unauthorized"}), 401
+            return jsonify({"error": "Unauthorized read request"}), 401
 
         # Step 1: Fetch user to ensure they exist
         user = db.session.query(CompanyLogin).filter_by(id=user_id).first()
@@ -24,10 +24,6 @@ def readRequestFunction():
             .filter(OutstandingRequest.companyId == user_id)
             .all()
         )
-
-        if not requests:
-            # If no claims exist, return empty categories
-            return jsonify({"message": "No requests found."}), 200
 
         # Step 3: Organize requests
         result = {"requests": []}
