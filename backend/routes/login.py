@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 from flask import Blueprint, request, jsonify
-from backend.routes.models import CompanyLogin
+from routes.models import CompanyLogin
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 
 def loginFunction():
