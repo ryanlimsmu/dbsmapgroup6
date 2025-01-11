@@ -1,0 +1,43 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black; /* Black background */
+  padding: 10px 20px;
+}
+
+.navbar-logo {
+  height: 40px;
+}
+
+.navbar-link {
+  color: white; /* White text for the links */
+  text-decoration: none;
+  font-size: 18px;
+  margin: 0 15px;
+  transition: color 0.3s; /* Smooth transition for hover */
+}
+
+.navbar-link:hover {
+  color: red; /* Red on hover */
+}
+
+.navbar-button {
+  background-color: red; /* Red background for the button */
+  border: none;
+  color: white; /* White text */
+  padding: 8px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+.navbar-button:hover {
+  background-color: #cc0000; /* Darker red on hover */
+}
+
+.navbar-left, .navbar-center, .navbar-right {
+  display: flex;
+  align-items: center;
+}
