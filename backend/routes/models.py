@@ -3,6 +3,15 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
+class CompanyLogin(db.Model):
+    __tablename__ ="companylogin"
+    companyId = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    companyUsername = db.Column(db.String(256), unique=True, nullable=False)
+    companyPassword = db.Column(db.String(256), nullable=False)
+    company = db.relationship('CompanyAccount', foreign_keys=[companyId], backref='outstanding_requests')
+    def __repr__(self):
+        return f"<CompanyLogin(companyId={self.companyId}, companyUsername={self.companyUsername})>"
+
 class CompanyAccount(db.Model):
     __tablename__ = 'companyaccount'
 

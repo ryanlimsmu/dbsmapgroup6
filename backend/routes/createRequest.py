@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from models import db, CompanyAccount
+from backend.routes.models import db, CompanyAccount
 
 def createRequestFunction(connection):
     # Just template

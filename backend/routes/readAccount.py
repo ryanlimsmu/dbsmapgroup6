@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from models import db, CompanyAccount
 
-def createRequestFunction(connection):
+def readAccountFunction(connection):
     # Just template
     data = request.json  # Parse the JSON payload
     username = data.get('username')

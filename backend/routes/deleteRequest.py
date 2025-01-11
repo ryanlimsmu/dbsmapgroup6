@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
-from models import db, CompanyAccount
+from backend.routes.models import db, CompanyAccount
 
-def createRequestFunction(connection):
+def deleteRequestFunction(connection):
     # Just template
     data = request.json  # Parse the JSON payload
     username = data.get('username')
