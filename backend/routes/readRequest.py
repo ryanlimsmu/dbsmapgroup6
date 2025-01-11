@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import get_jwt_identity
 from sqlalchemy.orm import joinedload
 
-from backend.routes.models import db, CompanyLogin, CompanyAccount, OutstandingRequest
+from routes.models import db, CompanyLogin, CompanyAccount, OutstandingRequest
 
 
 def readRequestFunction():
